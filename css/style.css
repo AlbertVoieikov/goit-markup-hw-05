@@ -1,3 +1,8 @@
+:root {
+  --color4: #afb1b8;
+  --color4hover: #2196f3;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0.03em;
@@ -64,6 +69,9 @@ img {
   /* margin-bottom: 30px; */
   align-items: center;
 }
+.link {
+  position: relative;
+}
 
 .site-nav .link {
   display: block;
@@ -95,6 +103,29 @@ img {
 
 .active .link {
   color: #2196f3;
+}
+
+.line::before {
+  content: '';
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: #2196f3;
+  border-radius: 2px;
+
+  transform: scaleY(0);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line:hover::before,
+.line:focus::before {
+  transform: scaleY(1);
+}
+
+.active .line::before {
+  transform: scaleY(1);
 }
 
 /* Contacts */
@@ -442,17 +473,16 @@ img {
   justify-content: center;
   align-items: center;
 
-  --color4: #afb1b8;
+  fill: #afb1b8;
 
-  transition: var(--color4) 1250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-/* var(--color4) 1250ms cubic-bezier(0.4, 0, 0.2, 1), */
 
 .customers-link:hover,
 .customers-link:focus {
-  --color4: #2196f3;
+  fill: #2196f3;
   border-color: #2196f3;
 }
 
@@ -662,7 +692,7 @@ img {
 }
 
 .portfolio-item:not(:nth-child(3n)) {
-  margin-right: 29.7px;
+  margin-right: 30px;
 }
 
 .portfolio-item:nth-child(3n) {
@@ -711,11 +741,9 @@ img {
 }
 
 .texthover {
-  /* content: ''; */
   position: absolute;
   top: 0;
   left: 0;
-  /* transform: translate(-50%, -50%); */
 
   font-size: 18px;
   line-height: 1.6;
@@ -732,6 +760,7 @@ img {
   transform: translateY(100%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .pf-link:hover .texthover {
   transform: translateY(0%);
 }
